@@ -1,7 +1,21 @@
-function Results() {
+import ResultCard from './ResultCard'
+
+function Results({movies, addToNom}){
+
+  const mapMovies = () => {
+    if (movies) {
+      return movies.map(movie => {
+        return (
+          <ResultCard movie={movie} key={movie.imdbID} addToNom={addToNom}/>
+        )
+      })
+    }
+  }
+
   return (
     <div>
-      Results
+      <h4>Results</h4>
+      {mapMovies()}
     </div>
   )
 }
