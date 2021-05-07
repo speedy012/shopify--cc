@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function ResultCard({movie, addToNom}) {
+function ResultCard({ movies, movie, addToNom, nominatedMovies }) {
+
+  const [appear, setAppear] = useState(false)
+
+  useEffect(() =>{
+    if(nominatedMovies.some(nomMovie => nomMovie.Title === movie.Title) && !appear) {
+      setAppear(!appear)
+    }
+  })
+
+  const alreadyNom = () => {
+    setAppear(!appear)
+  }
+
+  const handleClick = (movie) => {
+    addToNom(movie)
+    alreadyNom()
+  }
 
   return (
     <div>
-      <h5>{movie.Title} Release:{movie.Year} </h5>
-      <button onClick={()=> addToNom(movie)}>Nominate</button>
+      <h5 >{movie.Title} Release:{movie.Year} </h5>
+      <button  disabled={appear} onClick={()=> handleClick(movie)}>Nominate</button>
     </div>
   )
 }
 
 export default ResultCard
+
+
+

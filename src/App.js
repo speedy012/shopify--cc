@@ -2,9 +2,11 @@ import './App.css';
 
 import React, { useState } from 'react'
 
+import Banner from './components/Banner'
 import Nominations from './components/Nominations'
 import Results from './components/Results'
 import Search from './components/Search'
+import Title from './components/TItle'
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -13,7 +15,7 @@ function App() {
 
 
   const getMovieTitle = title => {
-    fetch(`http://www.omdbapi.com/?s=${title}&apikey=14e28ea6`)
+    fetch(`http://www.omdbapi.com/?s=${title}&apikey=`)
       .then(res => res.json())
       .then(data=> setMovies(data.Search))
       .catch(error => alert(error.message))
@@ -21,22 +23,25 @@ function App() {
   }
 
   const addToNom = nom => {
-    if (nominatedMovies.includes(nom)) {
-      alert('already in your list ')
-    } else {
-      setNominatedMovies([...nominatedMovies, nom])
-    }
+
+    setNominatedMovies([...nominatedMovies, nom])
+
   }
+
 
   const removeNom = (pickedMovie) => {
     const filterArray = nominatedMovies.filter(movie => movie.Title !== pickedMovie.Title)
     setNominatedMovies(filterArray)
   }
 
+
+
   return (
     <div className="App">
+      <Title/>
       <Search searchWord={searchWord} getMovieTitle={getMovieTitle}/>
-      <Results movies={movies} addToNom={addToNom} />
+      {nominatedMovies.length >= 5? <Banner/> : null}
+      <Results movies={movies} addToNom={addToNom} nominatedMovies={nominatedMovies} />
       <Nominations nominatedMovies={nominatedMovies} removeNom={removeNom} />
     </div>
   );

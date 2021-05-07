@@ -1,12 +1,14 @@
 import ResultCard from './ResultCard'
 
-function Results({movies, addToNom}){
+function Results({ movies, addToNom, nominatedMovies }){
 
   const mapMovies = () => {
     if (movies) {
       return movies.map(movie => {
         return (
-          <ResultCard movie={movie} key={movie.imdbID} addToNom={addToNom}/>
+
+          <ResultCard movies={movies} movie={movie} key={movie.imdbID} addToNom={addToNom} nominatedMovies={nominatedMovies} />
+
         )
       })
     }
