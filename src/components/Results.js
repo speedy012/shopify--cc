@@ -1,6 +1,6 @@
 import ResultCard from './ResultCard'
 
-function Results({ movies, addToNom, nominatedMovies }){
+function Results({ movies, addToNom, nominatedMovies, searchWord }){
 
   const mapMovies = () => {
     if (movies) {
@@ -15,8 +15,8 @@ function Results({ movies, addToNom, nominatedMovies }){
   }
 
   return (
-    <div>
-      <h4>Results</h4>
+    <div className="results">
+      <h4>Results for "{searchWord}"</h4>
       {mapMovies()}
     </div>
   )

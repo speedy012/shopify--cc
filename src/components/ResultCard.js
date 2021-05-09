@@ -8,7 +8,7 @@ function ResultCard({ movies, movie, addToNom, nominatedMovies }) {
     if(nominatedMovies.some(nomMovie => nomMovie.Title === movie.Title) && !appear) {
       setAppear(!appear)
     }
-  })
+  }, [nominatedMovies, appear, movie.Title])
 
   const alreadyNom = () => {
     setAppear(!appear)

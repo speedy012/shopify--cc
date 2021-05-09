@@ -2,7 +2,7 @@
 function TItle() {
   return (
     <div>
-      <h3 className="title"> The Shoppies</h3>
+      <h2 className="title"> The Shoppies</h2>
     </div>
   )
 }

@@ -5,7 +5,6 @@ function Nominations({nominatedMovies, removeNom}) {
   const nomList = () => {
     if (nominatedMovies.length > 0) {
       return  nominatedMovies.map(movie => {
-        console.log("in methodd", movie)
         return (
           <div key={movie.imdbID} >
             <h5>{movie.Title} </h5>
@@ -17,8 +16,8 @@ function Nominations({nominatedMovies, removeNom}) {
   }
 
   return (
-    <div>
-      <h5>Nomination</h5>
+    <div className="nominations">
+      <h4>Nomination</h4>
       {nomList()}
     </div>
   )
