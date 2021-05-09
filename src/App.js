@@ -18,8 +18,8 @@ function App() {
 
 
   const getMovieTitle = title => {
-    console.log("in", process.env.OMDB_KEY)
-    fetch(`http://www.omdbapi.com/?s=${title}&apikey=${KEY}`)
+    // console.log("in", process.env.OMDB_KEY)
+    fetch(`https://www.omdbapi.com/?s=${title}&apikey=${KEY}`)
       .then(res => res.json())
       .then(data=> setMovies(data.Search))
       .catch(error => alert(error.message))
